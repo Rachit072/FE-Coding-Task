@@ -1,6 +1,7 @@
 import React,{useEffect,useState} from 'react';
 import axios from 'axios';
 import './App.css';
+import RepoCard from './compoents/RepoCard';
 
 
 function App() {
@@ -57,28 +58,14 @@ function App() {
         }
       };
     }, []);
+  
   return (
     <div className="App">
       <h1 className='text-3xl font-bold underline'>Most Starred Repos</h1>
       <ul className='repo-container'>
-        {repos.map((repo)=>(
-        <li>
-          <div className='f-row' >
-            <div className='avator-container'>
-              <img className='avator-border' src={repo.owner.avatar_url} alt={repo.owner.login} width="110" height="115" />
-            </div>
-            <div className='f-col'>
-              <div>{repo.name}</div>
-              <div>{repo.description}</div>
-              <div className='f-row'>
-                <div className='box'>{repo.stargazers_count}</div>
-                <div className='box'>{repo.open_issues}</div>
-                <div>Last pushed {repo.pushed_at} by {repo.owner.login}</div>
-              </div>
-            </div>
-          </div>
-      </li>
-    ))}
+      {repos.map((repo) => (
+        <RepoCard key={repo.id} repo={repo} />
+        ))}
       </ul>
       {loading && <div>Loading...</div>}
       <div id="loader" style={{ height: '20px' }}></div>
