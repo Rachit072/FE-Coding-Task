@@ -63,17 +63,17 @@ function App() {
       <ul className='repo-container'>
         {repos.map((repo)=>(
         <li>
-          <div className=' flex flex-row' >
+          <div className='f-row' >
             <div className='avator-container'>
-              <img src={repo.owner.avatar_url} alt={repo.owner.login} width="20" height="20" />
+              <img className='avator-border' src={repo.owner.avatar_url} alt={repo.owner.login} width="110" height="115" />
             </div>
-            <div className='repo-container'>
+            <div className='f-col'>
               <div>{repo.name}</div>
               <div>{repo.description}</div>
-              <div>
-                <div></div>
-                <div></div>
-                <div></div>
+              <div className='f-row'>
+                <div className='box'>{repo.stargazers_count}</div>
+                <div className='box'>{repo.open_issues}</div>
+                <div>Last pushed {repo.pushed_at} by {repo.owner.login}</div>
               </div>
             </div>
           </div>
