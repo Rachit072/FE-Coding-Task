@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import CommitActivity from './CommitActivity';
 
 function RepoCard  ({ repo }) {
   const [dropdown, setDropdown] = useState(false);
@@ -8,7 +9,8 @@ function RepoCard  ({ repo }) {
   };
 
   return (
-    <li key={repo.id}>
+    <div>
+      <li key={repo.id}>
       <div className='f-row'>
         <div className='avator-container'>
           <img className='avator-border' src={repo.owner.avatar_url} alt={repo.owner.login} width='110' height='115' />
@@ -19,9 +21,10 @@ function RepoCard  ({ repo }) {
           <div className='f-row'>
             <div className='box'>{repo.stargazers_count}</div>
             <div className='box'>{repo.open_issues}</div>
-            <div>Last pushed {repo.pushed_at} by {repo.owner.login}</div>
+            <div style={{fontSize:"12px",paddingTop:"3px"}}>Last pushed {repo.pushed_at} by {repo.owner.login}</div>
           </div>
         </div>
+        <div style={{flex:"1"}}></div>
         <div className='dropdown' onClick={handleDropdown}>
           {!dropdown ? (
             <img
@@ -34,7 +37,9 @@ function RepoCard  ({ repo }) {
           )}
         </div>
       </div>
+      { dropdown && <CommitActivity repo={repo.name} owner={repo.owner.login}/>}
     </li>
+    </div>
   );
 };
 

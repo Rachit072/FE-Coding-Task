@@ -14,7 +14,7 @@
 .f-row{
   display: flex;
   flex-direction: row;
-  gap: 100px;
+  gap:60px ;
 }
 .f-col{
   display: flex;
@@ -33,12 +33,13 @@
   border: 2px solid grey;
   height: 25px;
   width: 60px;
+  padding: 0px;
 }
 .dropdown:hover{
   cursor: pointer;
 }
 .dropdown{
-  padding-left: 20px;
+  padding-left: 50px;
 }
 @media screen and (max-width: 768px) {
   .f-row {
